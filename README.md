@@ -1,5 +1,6 @@
 # Hugo-docker-script
-This Dockerfile is used to dockerized hugo wesite and a script to update the running image in a server based on the content of a github. This dicker can use for non-root users. After building the image and push it to your server, you can test the generated website by updating files in your website content repository, then see the changes in your website. The script runs in the background checks for the assigen repository every 20s and if there is a new push then will update the website.
+This Dockerfile is used to dockerized Hugo website and a script to update the running image in a server based on a Github. This dicker can use for non-root users. After building the image and push it to your server, you can test the generated website by updating files in your website content repository and then seeing the changes in your website. The script runs in the background checks for the assigned repository every 20s, and if there is a new push, it will update the website.
+If you would like to use Nginx, there is also an example of how to configure Nginx in this repository.
 
 To build, run and push the image: 
 ```
