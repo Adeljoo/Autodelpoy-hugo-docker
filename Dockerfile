@@ -1,19 +1,18 @@
 FROM debian:buster as build
 #MAINTAINER amene.deljoo@gmail.com
 ARG secrets.GIT_TOKEN
-ENV tenantuserid=1073
-ENV USERID $tenantuserid
+ENV USERID $user
 #ENV GID $tenantuserid
-RUN addgroup --gid $USERID dsh \
+RUN addgroup --gid $USERID (your user) \
    && adduser \
    --disabled-password \
    --gecos "" \
    --home "$(pwd)" \
-   --ingroup dsh \
+   --ingroup (your user) \
    --no-create-home \
   # --force-badname\
    --uid $USERID \
-   dsh
+   (your user)
 
 # Download and install hugo
 RUN apt-get -qq update \
@@ -28,7 +27,7 @@ RUN curl -sL -o /tmp/hugo.deb \
     rm /tmp/hugo.deb
 
 ENV HUGO_APPEND_PORT true
-ENV HUGO_BASE_URL https://autogit.poc.kpn-dsh.com
+ENV HUGO_BASE_URL https://example.com
 
 COPY scripts/*.sh  scripts/
 
@@ -37,7 +36,7 @@ RUN chmod +x scripts/*.sh
 RUN mkdir /site
 RUN chown -R $USERID.$USERID /site
 
-USER dsh
+USER (your user)
 #EXPOSE 1313
 # Load the entry point
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
