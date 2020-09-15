@@ -7,14 +7,13 @@ To build, run and push the image:
 DOCKER_REPO_URL=your-docker-repo
 VERSION:=versionnumber
 tagname=site
-
 secrets.GIT_TOKEN=(git personal token)
 image=$(DOCKER_REPO_URL)/$(tagname):$(VERSION)
 
 help:
 	@echo "build - build the  image"
 	@echo "run   - run the image in local docker"
-	@echo "push  - push the  image to jfrog"
+	@echo "push  - push the  image to server or your hub"
 	@echo "show  - show the current make variables"
 
 build:
